@@ -51,7 +51,7 @@ export default function App(){
 
   return (
     <div>
-      <Course courses ={courses} />
+      <Course course ={courses} />
     </div>
   )
 }
