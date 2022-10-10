@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { AddFormContact } from "./components/AddFormContact";
 import { Persons } from "./components/Persons";
+import axios from "axios";
 
 function App() {
-  const [fullContacts, setFullContacts] = useState([
-    { name: "Arto Hellas", number: "040-123456", id: 1 },
-    { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
-    { name: "Dan Abramov", number: "12-43-234345", id: 3 },
-    { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
-  ]);
-  const [persons, setPersons] = useState(fullContacts);
+  const [fullContacts, setFullContacts] = useState([]);
+  const [persons, setPersons] = useState([]);
 
   const [newName, setNewName] = useState("");
 
   const [number, setNumber] = useState("");
+
+  useEffect(() => {
+    
+    axios
+      .get("http://localhost:3001/persons")
+      .then((response) => {
+        setFullContacts(response.data)
+        setPersons(fullContacts)
+
+      })
+      .catch((err) => {
+        throw new Error (err.data)
+      })
+      
+      
+  },[]);
 
   const handleNameChange = (e) => setNewName(e.target.value);
   const handleNewNumber = (e) => setNumber(e.target.value);
@@ -45,6 +57,7 @@ function App() {
 
   return (
     <div>
+    
       <h2>Phonebook</h2>
 
       <SearchBar searchContact={searchContact} />

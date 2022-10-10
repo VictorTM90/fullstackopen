@@ -1,0 +1,15 @@
+.country{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+}
+.country>img {
+    width: 100px;
+    height: 100px;
+}
+
+.country>ul{
+    list-style: none;
+    padding: 0;
+}
