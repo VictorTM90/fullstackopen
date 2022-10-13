@@ -1,0 +1,26 @@
+
+.notification{
+    width: 250px;
+    height: 25px;
+    border-radius:  10px ;
+    padding: 0.5, 0.5;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem;
+    border-color: rgb(7, 152, 152);
+    border-style: solid;
+    border-width: thin;
+    background-color: rgb(118, 201, 118);
+    text-align: center;
+    white-space: normal;
+}
+
+.message{
+    color: rgb(255, 255, 255);
+    margin:0;
+}
+
+.error{
+    color: rgb(187, 37, 37);
+    margin:0;
+}

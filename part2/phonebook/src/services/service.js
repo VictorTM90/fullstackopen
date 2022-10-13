@@ -19,11 +19,11 @@ const updateContact = (id, contact) => {
         .then(response => response.data)
         .catch(err => {
             const response = `Information of ${contact.name} has already been removed from server` 
-            return {err, response} 
+            return response 
         })
 }
 
-const deleteContact = (id) => axios.delete(`${baseUrl}/${id}`).then(response => response.data)
+const deleteContact = (id) => axios.delete(`${baseUrl}/${id}`).then(response => console.log('vacio'))
 
 export  {
     getAllContact,

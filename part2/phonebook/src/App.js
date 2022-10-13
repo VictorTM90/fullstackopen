@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { AddFormContact } from "./components/AddFormContact";
 import { Persons } from "./components/Persons";
+import { Notification } from "./components/Message"
 import {
   getAllContact,
   addContact,
@@ -14,8 +15,9 @@ function App() {
   const [persons, setPersons] = useState([]);
 
   const [newName, setNewName] = useState("");
-
   const [number, setNumber] = useState("");
+  const [message, setMessage] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     getAllContact()
@@ -56,12 +58,17 @@ function App() {
       alert(`${newPerson.name} is already added to phonebook, replace old number with a new one`)
       updateContact(checkPerson.id, newPerson)
        .then(response => {
-        console.log(response)
-       setFullContacts(fullContacts.map(contact => contact.id !== response.id ? contact : response))})
+       setFullContacts(fullContacts.map(contact => contact.id !== response.id ? contact : response))
+      }).catch(err => {
+        setError(`Information of ${err.name} has already been removed from server`)
+        setTimeout(()=> setError(null), 5000)
+      })
     };
 
     addContact(newPerson);
     setFullContacts([...fullContacts, newPerson]);
+    setMessage(`Added ${newPerson.name}`)
+    setTimeout(()=> setMessage(null), 5000)
 
     setNewName("");
     setNumber("");
@@ -76,7 +83,7 @@ function App() {
 
     const delteConfirm = window.confirm(`You wan delete ${name}`);
     if (delteConfirm) {
-      deleteContact(id);
+      deleteContact(id)
       setFullContacts(templist);
     }
   };
@@ -84,6 +91,7 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} error={error}/>
 
       <SearchBar searchContact={searchContact} />
 

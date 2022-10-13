@@ -17,33 +17,13 @@
     },
     {
       "name": "aitor",
-      "number": "555",
+      "number": "184-8484",
+      "id": 5
+    },
+    {
+      "name": "victor",
+      "number": "66-66-666",
       "id": 6
-    },
-    {
-      "name": "victor",
-      "number": "66",
-      "id": 7
-    },
-    {
-      "name": "victor",
-      "number": "5-48-88844",
-      "id": 8
-    },
-    {
-      "name": "aitor",
-      "number": "666",
-      "id": 9
-    },
-    {
-      "name": "aitor",
-      "number": "777",
-      "id": 10
-    },
-    {
-      "name": "victor",
-      "number": "8-8484",
-      "id": 11
     }
   ]
 }
