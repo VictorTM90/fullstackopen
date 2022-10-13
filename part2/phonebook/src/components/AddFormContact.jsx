@@ -1,9 +1,7 @@
 import React from 'react'
 
 export const AddFormContact = ({handleSubmit, newName, handleNameChange, number, handleNewNumber}) => {
-  
-  
-  
+
     return (
     <div>
         <form onSubmit = {handleSubmit}>
